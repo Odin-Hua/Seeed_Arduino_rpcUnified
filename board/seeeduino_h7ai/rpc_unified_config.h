@@ -6,7 +6,8 @@
 #define RPC_SERVER_STACK_SIZE 8192
 #define RPC_CLIENT_STACK_SIZE 10240
 
-EUart rpc_uart((void *)USART1, PB15, PB14);
+EUart rpc_uart((void *)USART1, PA10, PB14);
+//EUart rpc_uart((void *)USART3, PD9, PD8);
 UartTransport g_transport(&rpc_uart, RPC_BAUD);
 
 #define RTL8720_RESET()          \
@@ -14,10 +15,10 @@ UartTransport g_transport(&rpc_uart, RPC_BAUD);
     {                            \
         SerialUSB.begin(115200); \
         delay(100);              \
-        pinMode(PH2, OUTPUT);    \
-        digitalWrite(PH2, LOW);  \
+        pinMode(PC3, OUTPUT);    \
+        digitalWrite(PC3, LOW);  \
         delay(100);              \
-        digitalWrite(PH2, HIGH); \
+        digitalWrite(PC3, HIGH); \
         delay(100);              \
     } while (0)
 #endif
